@@ -1,0 +1,55 @@
+
+use strict;
+use warnings;
+
+use Module::Build 0.3601;
+use lib qw{inc}; use Alien::Base::ModuleBuild;
+
+my %module_build_args = (
+  "alien_name" => "Uninum",
+  "alien_repository" => {
+    "host" => "billposer.org",
+    "location" => "/Software/libuninum.html",
+    "pattern" => qr/(?^u:^libuninum-2.7.tar.gz([\d\.]+)\.tar\.gz$)/,
+    "protocol" => "http"
+  },
+  "build_requires" => {},
+  "configure_requires" => {
+    "Alien::Base" => "0.002",
+    "File::ShareDir" => "1.03",
+    "Path::Class" => "0.013"
+  },
+  "dist_abstract" => "Alien package for the libuninum library",
+  "dist_author" => [
+    "Zakariyya Mughal <zmughal\@cpan.org>"
+  ],
+  "dist_name" => "Alien-Uninum",
+  "dist_version" => "0.001",
+  "license" => "perl",
+  "module_name" => "Alien::Uninum",
+  "recommends" => {},
+  "recursive_test_files" => 1,
+  "requires" => {
+    "Alien::Base" => "0.002",
+    "File::ShareDir" => "1.03",
+    "Path::Class" => "0.013",
+    "parent" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "script_files" => [],
+  "test_requires" => {}
+);
+
+
+my %fallback_build_requires = ();
+
+
+unless ( eval { Module::Build->VERSION(0.4004) } ) {
+  delete $module_build_args{test_requires};
+  $module_build_args{build_requires} = \%fallback_build_requires;
+}
+
+my $build = Alien::Base::ModuleBuild->new(%module_build_args);
+
+$build->create_build_script;
