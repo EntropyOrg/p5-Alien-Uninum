@@ -6,11 +6,11 @@ use Module::Build 0.3601;
 use lib qw{inc}; use Alien::Base::ModuleBuild;
 
 my %module_build_args = (
-  "alien_name" => "Uninum",
+  "alien_name" => "libuninum",
   "alien_repository" => {
     "host" => "billposer.org",
-    "location" => "/Software/Downloads/libuninum-2.7.tar.gz",
-    "pattern" => qr/(?^u:^Uninum-([\d\.]+)\.tar\.gz$)/,
+    "location" => "/Software/Downloads/",
+    "pattern" => qr/(?^u:^libuninum-([\d\.]+)\.tar\.gz$)/,
     "protocol" => "http"
   },
   "build_requires" => {},
