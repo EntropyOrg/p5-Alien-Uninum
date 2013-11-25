@@ -5,5 +5,4 @@ MANIFEST
 META.yml
 README
 dist.ini
-dist.ini~~
 lib/Alien/Uninum.pm
