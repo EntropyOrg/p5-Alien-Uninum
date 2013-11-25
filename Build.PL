@@ -9,8 +9,8 @@ my %module_build_args = (
   "alien_name" => "Uninum",
   "alien_repository" => {
     "host" => "billposer.org",
-    "location" => "/Software/libuninum.html",
-    "pattern" => qr/(?^u:^libuninum-2.7.tar.gz([\d\.]+)\.tar\.gz$)/,
+    "location" => "/Software/Downloads/libuninum-2.7.tar.gz",
+    "pattern" => qr/(?^u:^Uninum-([\d\.]+)\.tar\.gz$)/,
     "protocol" => "http"
   },
   "build_requires" => {},
