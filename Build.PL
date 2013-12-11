@@ -10,7 +10,7 @@ my %module_build_args = (
   "alien_repository" => {
     "host" => "billposer.org",
     "location" => "/Software/libuninum.html",
-    "pattern" => qr/(?^u:^.*\/libuninum-([\d\.])+\.tar\.bz2$)/,
+    "pattern" => qr/(?^u:^libuninum-([\d\.])+\.tar\.bz2$)/,
     "protocol" => "http"
   },
   "build_requires" => {},
