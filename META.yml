@@ -6,7 +6,6 @@ build_requires: {}
 configure_requires:
   Alien::Base: 0.002
   File::ShareDir: 1.03
-  Path::Class: 0.013
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830'
 license: perl
@@ -17,7 +16,6 @@ name: Alien-Uninum
 requires:
   Alien::Base: 0.002
   File::ShareDir: 1.03
-  Path::Class: 0.013
   parent: 0
   strict: 0
   warnings: 0

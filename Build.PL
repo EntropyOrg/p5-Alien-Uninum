@@ -10,14 +10,13 @@ my %module_build_args = (
   "alien_repository" => {
     "host" => "billposer.org",
     "location" => "/Software/libuninum.html",
-    "pattern" => qr/(?^u:^libuninum-([\d\.]+)\.tar\.gz$)/,
+    "pattern" => qr/(?^u:^libuninum-[\d\.]+.tar.gz$)/,
     "protocol" => "http"
   },
   "build_requires" => {},
   "configure_requires" => {
     "Alien::Base" => "0.002",
-    "File::ShareDir" => "1.03",
-    "Path::Class" => "0.013"
+    "File::ShareDir" => "1.03"
   },
   "dist_abstract" => "Alien package for the libuninum library",
   "dist_author" => [
@@ -32,7 +31,6 @@ my %module_build_args = (
   "requires" => {
     "Alien::Base" => "0.002",
     "File::ShareDir" => "1.03",
-    "Path::Class" => "0.013",
     "parent" => 0,
     "strict" => 0,
     "warnings" => 0
