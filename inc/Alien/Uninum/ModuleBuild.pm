@@ -70,17 +70,19 @@ sub alien_do_commands
 package
   main;
 
-sub alien_patch () {
-	print system("ls");
+sub alien_patch {
 	my $unicode_h = 'unicode.h';
 	my $unicode_h_new = "$unicode_h.tmp";
 	open my $in,  '<', $unicode_h;
 	open my $out, '>', $unicode_h_new;
 	while(<$in>) {
 		if(/^typedef.*UTF32;/) {
+			# replace the UTF32 tyepdef
+			# (it shouldn't be an unsigned long)
 			print $out "typedef uint32_t	UTF32;\n"
+		} else {
+			print $out $_;
 		}
-		#print $out $_;
 	}
 	close $in;
 	close $out;
