@@ -9,22 +9,10 @@ use base qw( Alien::Base::ModuleBuild );
 use FindBin ();
 use Text::ParseWords qw( shellwords );
  
-sub new
-{
-  my $class = shift;
-  if($^O eq 'MSWin32')
-  {
-    return Module::Build->new(@_);
-  }
-  else
-  {
-    return $class->SUPER::new(@_);
-  }
-}
- 
+
 my $cflags;
 my $libs;
-   
+
 sub alien_do_commands
 {
   my($self, $phase) = @_;
@@ -74,30 +62,26 @@ sub alien_do_commands
    
   $self->SUPER::alien_do_commands($phase);
 }
- 
- 
+
 package
   main;
- 
-sub alien_patch ()
-{
-    print system("ls");
-    #open my $in,  '<', 'libarchive/archive_crypto_private.h';
-    #open my $out, '>', 'libarchive/archive_crypto_private.h.tmp';
-    #while(<$in>)
-    #{
-	    #if(/^#include \<wincrypt.h\>/)
-	    #{
-		    #print $out "#if defined(__CYGWIN__)\n";
-		    #print $out "#include <windows.h>\n";
-		    #print $out "#endif\n";
-	    #}
-	    #print $out $_;
-    #}
-    #close $in;
-    #close $out;
-    #unlink 'libarchive/archive_crypto_private.h';
-    #rename 'libarchive/archive_crypto_private.h.tmp', 'libarchive/archive_crypto_private.h';
+
+sub alien_patch () {
+	print system("ls");
+	my $unicode_h = 'unicode.h';
+	my $unicode_h_new = "$unicode_h.tmp";
+	open my $in,  '<', $unicode_h;
+	open my $out, '>', $unicode_h_new;
+	while(<$in>) {
+		if(/^typedef.*UTF32;/) {
+			print $out "typedef uint32_t	UTF32;\n"
+		}
+		#print $out $_;
+	}
+	close $in;
+	close $out;
+	unlink $unicode_h;
+	rename $unicode_h_new, $unicode_h;
 }
  
 1;
