@@ -3,9 +3,14 @@ use strict;
 use warnings;
 
 use Module::Build 0.3601;
-use lib qw{inc}; use Alien::Base::ModuleBuild;
+use lib qw{inc}; use Alien::Uninum::ModuleBuild;
 
 my %module_build_args = (
+  "alien_build_commands" => [
+    "%x -I../../inc -MAlien::Libarchive::ModuleBuild -e alien_patch",
+    "%pconfigure --prefix=%s",
+    "make"
+  ],
   "alien_name" => "libuninum",
   "alien_repository" => {
     "host" => "billposer.org",
@@ -48,6 +53,6 @@ unless ( eval { Module::Build->VERSION(0.4004) } ) {
   $module_build_args{build_requires} = \%fallback_build_requires;
 }
 
-my $build = Alien::Base::ModuleBuild->new(%module_build_args);
+my $build = Alien::Uninum::ModuleBuild->new(%module_build_args);
 
 $build->create_build_script;
