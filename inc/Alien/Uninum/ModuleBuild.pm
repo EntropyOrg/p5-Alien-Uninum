@@ -9,6 +9,10 @@ use base qw( Alien::Base::ModuleBuild );
 use FindBin ();
 use Text::ParseWords qw( shellwords );
  
+sub new {
+  my $class = shift;
+  return $class->SUPER::new(@_);
+}
 
 my $cflags;
 my $libs;
