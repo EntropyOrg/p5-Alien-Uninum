@@ -27,7 +27,7 @@ my $libs;
    
 sub alien_do_commands
 {
-  #my($self, $phase) = @_;
+  my($self, $phase) = @_;
  
   #unless(defined $cflags)
   #{
@@ -81,25 +81,23 @@ package
  
 sub alien_patch ()
 {
-  if($^O eq 'cygwin' && `pwd` =~ /libarchive-3.1.2/)
-  {
-    open my $in,  '<', 'libarchive/archive_crypto_private.h';
-    open my $out, '>', 'libarchive/archive_crypto_private.h.tmp';
-    while(<$in>)
-    {
-      if(/^#include \<wincrypt.h\>/)
-      {
-        print $out "#if defined(__CYGWIN__)\n";
-        print $out "#include <windows.h>\n";
-        print $out "#endif\n";
-      }
-      print $out $_;
-    }
-    close $in;
-    close $out;
-    unlink 'libarchive/archive_crypto_private.h';
-    rename 'libarchive/archive_crypto_private.h.tmp', 'libarchive/archive_crypto_private.h';
-  }
+    print system("ls");
+    #open my $in,  '<', 'libarchive/archive_crypto_private.h';
+    #open my $out, '>', 'libarchive/archive_crypto_private.h.tmp';
+    #while(<$in>)
+    #{
+	    #if(/^#include \<wincrypt.h\>/)
+	    #{
+		    #print $out "#if defined(__CYGWIN__)\n";
+		    #print $out "#include <windows.h>\n";
+		    #print $out "#endif\n";
+	    #}
+	    #print $out $_;
+    #}
+    #close $in;
+    #close $out;
+    #unlink 'libarchive/archive_crypto_private.h';
+    #rename 'libarchive/archive_crypto_private.h.tmp', 'libarchive/archive_crypto_private.h';
 }
  
 1;
