@@ -70,6 +70,8 @@ sub alien_do_commands
 package
   main;
 
+use Config;
+
 sub alien_patch {
 	my $unicode_h = 'unicode.h';
 	my $unicode_h_new = "$unicode_h.tmp";
@@ -79,8 +81,10 @@ sub alien_patch {
 		if(/^typedef.*UTF32;/) {
 			# replace the UTF32 tyepdef
 			# (it shouldn't be an unsigned long)
-			print $out "#include <stdint.h>\n";
-			print $out "typedef uint32_t	UTF32;\n"
+			print $out <<END;
+/* PATCH: use Perl's U32 for portability */
+typedef $Config{u32type}	UTF32;
+END
 		} else {
 			print $out $_;
 		}
