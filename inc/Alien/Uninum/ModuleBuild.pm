@@ -8,6 +8,7 @@ use warnings;
 use base qw( Alien::Base::ModuleBuild );
 use FindBin ();
 use Text::ParseWords qw( shellwords );
+use ExtUtils::Embed;
  
 sub new {
   my $class = shift;
@@ -60,6 +61,9 @@ sub alien_do_commands
     #}
     #print "\n\n" unless $first;
   #}
+
+  $cflags .= shellwords " " . ccopts;
+  $libs   .= shellwords " " . ldopts;
  
   #local $ENV{CFLAGS} = $cflags;
   #local $ENV{LIBS}   = $libs;
