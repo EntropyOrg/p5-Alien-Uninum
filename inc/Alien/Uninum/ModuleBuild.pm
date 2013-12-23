@@ -65,8 +65,8 @@ sub alien_do_commands
   $cflags .= shellwords " " . ccopts;
   $libs   .= shellwords " " . ldopts;
  
-  #local $ENV{CFLAGS} = $cflags;
-  #local $ENV{LIBS}   = $libs;
+  local $ENV{CFLAGS} = $cflags;
+  local $ENV{LIBS}   = $libs;
    
   $self->SUPER::alien_do_commands($phase);
 }
