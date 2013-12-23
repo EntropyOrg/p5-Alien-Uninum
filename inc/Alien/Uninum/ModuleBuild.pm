@@ -63,11 +63,8 @@ sub alien_do_commands
   #}
 
   # to use perl.h
-  $self->extra_compiler_flags($self->extra_compiler_flags, shellwords ccopts);
-  $self->extra_linker_flags  ($self->extra_linker_flags,   shellwords ldopts);
- 
-  $ENV{CFLAGS}    .= ' '. $cflags;
-  $ENV{LDFLAGS}   .= ' '. $libs;
+  local $ENV{CFLAGS}    .= ' '. ccopts;
+  local $ENV{LDFLAGS}   .= ' '. ldopts;
    
   $self->SUPER::alien_do_commands($phase);
 }
