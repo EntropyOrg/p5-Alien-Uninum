@@ -13,10 +13,10 @@ my %module_build_args = (
   ],
   "alien_name" => "libuninum",
   "alien_repository" => {
-    "host" => "billposer.org",
-    "location" => "/Software/libuninum.html",
+    "host" => "",
+    "location" => "inc",
     "pattern" => qr/(?^u:^.*libuninum-([\d\.])+\.tar\.gz$)/,
-    "protocol" => "http"
+    "protocol" => "local"
   },
   "build_requires" => {},
   "configure_requires" => {
