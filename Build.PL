@@ -8,8 +8,6 @@ use lib qw{inc}; use Alien::Uninum::ModuleBuild;
 my %module_build_args = (
   "alien_build_commands" => [
     "%x -I../../inc -MAlien::Uninum::ModuleBuild -e alien_patch",
-    "echo \"cflags: \$CFLAGS\"",
-    "echo \"ldflags: \$LDFLAGS\"",
     "%pconfigure --prefix=%s",
     "make"
   ],

@@ -8,15 +8,10 @@ use warnings;
 use base qw( Alien::Base::ModuleBuild );
 use FindBin ();
 use Text::ParseWords qw( shellwords );
-use ExtUtils::Embed;
+use Config;
  
 sub new {
   my $class = shift;
-
-  # to use perl.h
-  $ENV{CFLAGS}    .= ' '. ccopts;
-  $ENV{LDFLAGS}   .= ' '. ldopts;
-
   return $class->SUPER::new(@_);
 }
 
@@ -66,7 +61,9 @@ sub alien_do_commands
     #}
     #print "\n\n" unless $first;
   #}
-
+  
+  #local $ENV{CFLAGS} = $cflags;
+  #local $ENV{LIBS}   = $libs;
    
   $self->SUPER::alien_do_commands($phase);
 }
@@ -83,9 +80,10 @@ sub alien_patch {
 		if(/^typedef.*UTF32;/) {
 			# replace the UTF32 tyepdef
 			# (it shouldn't be an unsigned long)
-			print $out "#include <perl.h>\n";
-			print $out "/* PATCH: use Perl's U32 for portability */\n";
-			print $out "typedef U32	UTF32;\n"
+			print $out <<END;
+/* PATCH: use Perl's U32 for portability */
+typedef $Config{u32type}	UTF32;
+END
 		} else {
 			print $out $_;
 		}
