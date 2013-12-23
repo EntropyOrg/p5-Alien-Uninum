@@ -12,6 +12,11 @@ use ExtUtils::Embed;
  
 sub new {
   my $class = shift;
+
+  # to use perl.h
+  $ENV{CFLAGS}    .= ' '. ccopts;
+  $ENV{LDFLAGS}   .= ' '. ldopts;
+
   return $class->SUPER::new(@_);
 }
 
@@ -62,9 +67,6 @@ sub alien_do_commands
     #print "\n\n" unless $first;
   #}
 
-  # to use perl.h
-  $ENV{CFLAGS}    .= ' '. ccopts;
-  $ENV{LDFLAGS}   .= ' '. ldopts;
    
   $self->SUPER::alien_do_commands($phase);
 }
