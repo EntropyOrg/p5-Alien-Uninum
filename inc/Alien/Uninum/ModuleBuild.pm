@@ -62,8 +62,8 @@ sub alien_do_commands
     #print "\n\n" unless $first;
   #}
 
-  $cflags .= shellwords " " . ccopts;
-  $libs   .= shellwords " " . ldopts;
+  $cflags .= ccopts;
+  $libs   .= ldopts;
  
   local $ENV{CFLAGS} = $cflags;
   local $ENV{LIBS}   = $libs;
