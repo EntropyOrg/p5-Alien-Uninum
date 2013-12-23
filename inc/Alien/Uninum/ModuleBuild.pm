@@ -66,7 +66,7 @@ sub alien_do_commands
   $self->extra_compiler_flags($self->extra_compiler_flags, shellwords ccopts);
   $self->extra_linker_flags  ($self->extra_linker_flags,   shellwords ldopts);
  
-  local $ENV{CFLAGS} .= ' '. $cflags;
+  local $ENV{CFLAGS}    .= ' '. $cflags;
   local $ENV{LDFLAGS}   .= ' '. $libs;
    
   $self->SUPER::alien_do_commands($phase);
