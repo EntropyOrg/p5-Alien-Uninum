@@ -67,6 +67,8 @@ sub alien_do_commands
  
   local $ENV{CFLAGS} = $cflags;
   local $ENV{LIBS}   = $libs;
+
+  use DDP; p $ENV{CFLAGS};
    
   $self->SUPER::alien_do_commands($phase);
 }
