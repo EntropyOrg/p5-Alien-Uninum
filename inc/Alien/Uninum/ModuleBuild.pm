@@ -62,6 +62,7 @@ sub alien_do_commands
     #print "\n\n" unless $first;
   #}
 
+  # to use perl.h
   $cflags .= ccopts;
   $libs   .= ldopts;
  
