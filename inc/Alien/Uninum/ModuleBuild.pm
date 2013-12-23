@@ -63,8 +63,8 @@ sub alien_do_commands
   #}
 
   # to use perl.h
-  local $ENV{CFLAGS}    .= ' '. ccopts;
-  local $ENV{LDFLAGS}   .= ' '. ldopts;
+  $ENV{CFLAGS}    .= ' '. ccopts;
+  $ENV{LDFLAGS}   .= ' '. ldopts;
    
   $self->SUPER::alien_do_commands($phase);
 }
