@@ -8,7 +8,6 @@ use warnings;
 use base qw( Alien::Base::ModuleBuild );
 use FindBin ();
 use Text::ParseWords qw( shellwords );
-use Config;
  
 sub new {
   my $class = shift;
@@ -70,6 +69,8 @@ sub alien_do_commands
 
 package
   main;
+
+use Config;
 
 sub alien_patch {
 	my $unicode_h = 'unicode.h';
