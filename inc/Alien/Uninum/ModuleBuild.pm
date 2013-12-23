@@ -79,8 +79,9 @@ sub alien_patch {
 		if(/^typedef.*UTF32;/) {
 			# replace the UTF32 tyepdef
 			# (it shouldn't be an unsigned long)
-			print $out "#include <stdint.h>\n";
-			print $out "typedef uint32_t	UTF32;\n"
+			print $out "#include <perl.h>\n";
+			print $out "/* PATCH: use Perl's U32 for portability */\n";
+			print $out "typedef U32	UTF32;\n"
 		} else {
 			print $out $_;
 		}
