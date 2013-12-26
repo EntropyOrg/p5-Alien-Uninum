@@ -28,7 +28,7 @@ my %module_build_args = (
     "Zakariyya Mughal <zmughal\@cpan.org>"
   ],
   "dist_name" => "Alien-Uninum",
-  "dist_version" => "0.001",
+  "dist_version" => "0.002",
   "license" => "perl",
   "module_name" => "Alien::Uninum",
   "recommends" => {},
@@ -41,11 +41,15 @@ my %module_build_args = (
     "warnings" => 0
   },
   "script_files" => [],
-  "test_requires" => {}
+  "test_requires" => {
+    "Test::More" => 0
+  }
 );
 
 
-my %fallback_build_requires = ();
+my %fallback_build_requires = (
+  "Test::More" => 0
+);
 
 
 unless ( eval { Module::Build->VERSION(0.4004) } ) {
