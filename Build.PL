@@ -15,7 +15,7 @@ my %module_build_args = (
   "alien_repository" => {
     "host" => "",
     "location" => "inc",
-    "pattern" => qr/(?^u:^.*libuninum-([\d\.])+\.tar\.gz$)/,
+    "pattern" => "^.*libuninum-([\\d\\.])+\\.tar\\.gz\$",
     "protocol" => "local"
   },
   "build_requires" => {},
