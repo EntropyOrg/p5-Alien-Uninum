@@ -10,6 +10,10 @@ Alien::Uninum - Alien package for the libuninum library
 
 version 0.002
 
+=head1 SEE ALSO
+
+L<libuninum|http://billposer.org/Software/libuninum.html>, L<Unicode::Number>
+
 =head1 AUTHOR
 
 Zakariyya Mughal <zmughal@cpan.org>
