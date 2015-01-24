@@ -1,9 +1,25 @@
 package Alien::Uninum;
-$Alien::Uninum::VERSION = '0.003';
+$Alien::Uninum::VERSION = '0.004';
 use strict;
 use warnings;
 
 use parent 'Alien::Base';
+
+sub Inline {
+	return unless $_[-1] eq 'C'; # Inline's error message is good
+	my $self = __PACKAGE__->new;
+	+{
+		LIBS => $self->libs,
+		INC => $self->cflags,
+		AUTO_INCLUDE =>
+		q/#include <unicode.h>
+#include <nsdefs.h>
+#include <uninum.h>
+
+/,
+	};
+}
+
 
 1;
 # ABSTRACT: Alien package for the libuninum library
@@ -20,7 +36,11 @@ Alien::Uninum - Alien package for the libuninum library
 
 =head1 VERSION
 
-version 0.003
+version 0.004
+
+=head1 Inline support
+
+This module supports L<Inline's with functionality|Inline/"Playing 'with' Others">.
 
 =head1 SEE ALSO
 
