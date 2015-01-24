@@ -1,3 +1,6 @@
+0.003 2015-01-24 14:46:48-0600
+  - add ExtUtils::Depends support
+
 0.002 2013-12-26 17:53:40-0600
   - add libuninum license
   - add tests

@@ -1,1 +1,0 @@
-PERL5LIB="$HOME/repo/fork/Alien-Base/lib/:$PERL5LIB" dzil install

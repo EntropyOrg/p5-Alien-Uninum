@@ -1,15 +1,12 @@
 package Alien::Uninum;
-{
-  $Alien::Uninum::VERSION = '0.002';
-}
-# ABSTRACT: Alien package for the libuninum library
-
+$Alien::Uninum::VERSION = '0.003';
 use strict;
 use warnings;
 
 use parent 'Alien::Base';
 
 1;
+# ABSTRACT: Alien package for the libuninum library
 
 __END__
 
@@ -23,7 +20,11 @@ Alien::Uninum - Alien package for the libuninum library
 
 =head1 VERSION
 
-version 0.002
+version 0.003
+
+=head1 SEE ALSO
+
+L<libuninum|http://billposer.org/Software/libuninum.html>, L<Unicode::Number>
 
 =head1 AUTHOR
 
