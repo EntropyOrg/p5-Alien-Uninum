@@ -1,5 +1,5 @@
 package Alien::Uninum;
-$Alien::Uninum::VERSION = '0.004';
+$Alien::Uninum::VERSION = '0.005';
 use strict;
 use warnings;
 
@@ -36,7 +36,7 @@ Alien::Uninum - Alien package for the libuninum library
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 Inline support
 
