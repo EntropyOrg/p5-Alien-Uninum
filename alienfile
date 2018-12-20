@@ -1,0 +1,36 @@
+use alienfile;
+
+use Config;
+
+share {
+	requires 'Alien::gmake' => 0.14;
+	requires 'Path::Tiny' => 0;
+
+	plugin Download => (
+		url => 'http://billposer.org/Software/libuninum.html',
+		version => qr/libuninum-([\d\.]+)\.tar\.gz/,
+	);
+
+	plugin Extract => 'tar.gz';
+
+	plugin 'Build::Autoconf';
+
+	patch sub {
+		my $unicode_h = Path::Tiny::path('unicode.h');
+		my $replaced = 0;
+		$unicode_h->edit_lines_utf8(sub {
+			$replaced ||= s|^typedef.*UTF32;|
+/* PATCH: use Perl's U32 for portability */
+typedef $Config{u32type}\tUTF32;
+			|;
+		});
+		die "Could not patch" unless $replaced;
+	};
+
+	build [
+		"%{configure}",
+		'%{make}',
+		'%{make} install',
+	];
+};
+
