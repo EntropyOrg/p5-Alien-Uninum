@@ -1,0 +1,10 @@
+native:
+  debian:
+    packages:
+      - libgmp-dev
+  macos-homebrew:
+    packages:
+      - gmp
+  msys2-mingw64:
+    packages:
+      - mingw-w64-x86_64-gmp
