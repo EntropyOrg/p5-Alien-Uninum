@@ -5,19 +5,36 @@ use warnings;
 
 use parent 'Alien::Base';
 
+sub inline_auto_include {
+	[
+		'unicode.h',
+		'nsdefs.h',
+		'uninum.h',
+	];
+}
+
+sub cflags {
+	my ($class) = @_;
+
+	$class->install_type eq 'share'
+		? '-I' . File::Spec->catfile($class->dist_dir, qw(include uninum))
+		: $class->SUPER::cflags;
+}
+
+sub libs {
+	my ($class) = @_;
+
+	my $path = $class->install_type eq 'share'
+		? '-L' . File::Spec->catfile($class->dist_dir, qw(lib))
+		: $class->SUPER::cflags;
+
+	join ' ', ( $path , '-luninum' );
+
+}
+
 sub Inline {
 	return unless $_[-1] eq 'C'; # Inline's error message is good
-	my $self = __PACKAGE__->new;
-	+{
-		LIBS => $self->libs,
-		INC => $self->cflags,
-		AUTO_INCLUDE =>
-		q/#include <unicode.h>
-#include <nsdefs.h>
-#include <uninum.h>
-
-/,
-	};
+	my $params = Alien::Base::Inline(@_);
 }
 
 
