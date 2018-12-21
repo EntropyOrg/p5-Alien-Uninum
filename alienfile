@@ -69,7 +69,7 @@ typedef $Config{u32type}\tUTF32;
 			die "Non-zero exit" if $exit != 0;
 		},
 		"%{configure}",
-		'%{make}',
+		'%{make} CFLAGS=-w',
 		'%{make} install',
 	];
 };
