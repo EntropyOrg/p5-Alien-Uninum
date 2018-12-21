@@ -29,7 +29,7 @@ typedef $Config{u32type}\tUTF32;
 			die "Could not patch $unicode_h" unless $replaced;
 		}
 
-		{
+		if( $^O eq 'MSWin32' ) {
 			my $uninum_c = Path::Tiny::path('uninum.c');
 			my $replaced = 0;
 			$uninum_c->edit_lines_utf8(sub {
